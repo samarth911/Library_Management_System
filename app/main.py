@@ -11,6 +11,8 @@ from maintenance.add_book import router as add_book_router
 from transactions.search_book import router as search_router
 from transactions.issue_book import router as issue_router
 from transactions.return_book import router as return_router
+from reports.master_list import router as master_router
+from reports.active_issues import router as active_router
 
 
 
@@ -29,6 +31,8 @@ app.include_router(add_book_router)
 app.include_router(search_router)
 app.include_router(issue_router)
 app.include_router(return_router)
+app.include_router(master_router)
+app.include_router(active_router)
 
 
 @app.get("/")

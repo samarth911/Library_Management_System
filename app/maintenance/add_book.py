@@ -32,21 +32,30 @@ def create_book(
     try:
         with conn.cursor() as cursor:
 
-            # 1. insert item
-            item_query = """
-            INSERT INTO items (title, author, category, publication_year, rack_location)
-            VALUES (%s,%s,%s,%s,%s)
-            """
-            cursor.execute(item_query, (title, author, category, year, rack))
+            # check if book/movie already exists
+            cursor.execute("""
+                SELECT item_id FROM items
+                WHERE title=%s AND author=%s AND category=%s
+            """, (title, author, category))
 
-            item_id = cursor.lastrowid
+            existing = cursor.fetchone()
 
-            # 2. insert physical copy
-            copy_query = """
-            INSERT INTO item_copies (item_id, serial_no)
-            VALUES (%s,%s)
-            """
-            cursor.execute(copy_query, (item_id, serial))
+            if existing:
+                # same title already exists → just add another copy
+                item_id = existing["item_id"]
+            else:
+                # new title → create master record
+                cursor.execute("""
+                    INSERT INTO items (title, author, category, publication_year, rack_location)
+                    VALUES (%s,%s,%s,%s,%s)
+                """, (title, author, category, year, rack))
+                item_id = cursor.lastrowid
+
+            # always add physical copy
+            cursor.execute("""
+                INSERT INTO item_copies (item_id, serial_no)
+                VALUES (%s,%s)
+            """, (item_id, serial))
 
         conn.commit()
 

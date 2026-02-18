@@ -1,0 +1,22 @@
+<h2>Master List of Books</h2>
+
+<table border="1">
+<tr>
+<th>Title</th>
+<th>Author</th>
+<th>Category</th>
+<th>Total Copies</th>
+<th>Available</th>
+</tr>
+
+{% for b in books %}
+<tr>
+<td>{{ b.title }}</td>
+<td>{{ b.author }}</td>
+<td>{{ b.category }}</td>
+<td>{{ b.total_copies }}</td>
+<td>{{ b.available_copies }}</td>
+</tr>
+{% endfor %}
+
+</table>

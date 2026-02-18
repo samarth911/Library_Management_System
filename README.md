@@ -12,79 +12,6 @@ This system provides two main user roles:
 
 ---
 
-## Directory Structure
-
-```
-library-management-system/
-│
-├── app/                                    # Main application package
-│   ├── main.py                             # FastAPI app entry point
-│   │
-│   ├── database/                           # Database configuration
-│   │   ├── connection.py                   # DB connection setup
-│   │   └── schema.sql                      # Database schema
-│   │
-│   ├── auth/                               # Authentication module
-│   │   ├── login_controller.py             # Login request handling
-│   │   └── auth_service.py                 # Authentication logic
-│   │
-│   ├── maintenance/                        # Admin operations (CRUD)
-│   │   ├── add_book.py                     # Add new books
-│   │   ├── update_book.py                  # Edit book details
-│   │   ├── add_membership.py               # Register new members
-│   │   ├── update_membership.py            # Update member info
-│   │   └── user_management.py              # User account management
-│   │
-│   ├── transactions/                       # Core library transactions
-│   │   ├── search_book.py                  # Book search functionality
-│   │   ├── book_availability.py            # Check book availability
-│   │   ├── issue_book.py                   # Issue book to member
-│   │   └── return_book.py                  # Process book return
-│   │
-│   ├── reports/                            # Analytics & reports
-│   │   ├── overdue_returns.py              # Overdue books report
-│   │   ├── active_issues.py                # Active issued books report
-│   │   ├── master_list.py                  # Complete inventory report
-│   │   └── reports_service.py              # Report generation logic
-│   │
-│   └── utils/                              # Helper utilities
-│       └── feedback_routes.py              # Feedback/logging routes
-│
-├── templates/                              # HTML UI templates
-│   ├── auth/
-│   │   ├── admin_login.html                # Admin login page
-│   │   └── user_login.html                 # Member login page
-│   │
-│   ├── admin/                              # Admin dashboard pages
-│   │   ├── home.html                       # Admin home dashboard
-│   │   ├── add_book.html                   # Book addition form
-│   │   ├── update_book.html                # Book update form
-│   │   ├── add_membership.html             # Member registration form
-│   │   ├── update_membership.html          # Member update form
-│   │   ├── user_management.html            # User management page
-│   │   └── reports/                        # Admin reports
-│   │       ├── overdue_returns.html
-│   │       ├── active_issues.html
-│   │       └── master_members.html
-│   │
-│   ├── user/                               # Member pages
-│   │   ├── home.html                       # Member home dashboard
-│   │   └── reports/                        # Member reports
-│
-│   └── shared/                             # Shared components
-│       ├── navbar.html                     # Navigation bar
-│       ├── confirmation.html               # Confirmation dialog
-│       └── cancellation.html               # Cancellation dialog
-│
-├── static/                                 # Static assets
-│   └── css/
-│       └── style.css                       # Global styling
-│
-└── README.md                               # This file
-```
-
----
-
 ## System Workflow
 
 ### 1. **User Authentication**
@@ -232,6 +159,78 @@ Verify the database connection string in `app/database/connection.py`
 - Online payment integration for fines
 - Mobile app version
 - Advanced analytics and dashboards
+
+---
+## Directory Structure
+
+```
+library-management-system/
+│
+├── app/                                    # Main application package
+│   ├── main.py                             # FastAPI app entry point
+│   │
+│   ├── database/                           # Database configuration
+│   │   ├── connection.py                   # DB connection setup
+│   │   └── schema.sql                      # Database schema
+│   │
+│   ├── auth/                               # Authentication module
+│   │   ├── login_controller.py             # Login request handling
+│   │   └── auth_service.py                 # Authentication logic
+│   │
+│   ├── maintenance/                        # Admin operations (CRUD)
+│   │   ├── add_book.py                     # Add new books
+│   │   ├── update_book.py                  # Edit book details
+│   │   ├── add_membership.py               # Register new members
+│   │   ├── update_membership.py            # Update member info
+│   │   └── user_management.py              # User account management
+│   │
+│   ├── transactions/                       # Core library transactions
+│   │   ├── search_book.py                  # Book search functionality
+│   │   ├── book_availability.py            # Check book availability
+│   │   ├── issue_book.py                   # Issue book to member
+│   │   └── return_book.py                  # Process book return
+│   │
+│   ├── reports/                            # Analytics & reports
+│   │   ├── overdue_returns.py              # Overdue books report
+│   │   ├── active_issues.py                # Active issued books report
+│   │   ├── master_list.py                  # Complete inventory report
+│   │   └── reports_service.py              # Report generation logic
+│   │
+│   └── utils/                              # Helper utilities
+│       └── feedback_routes.py              # Feedback/logging routes
+│
+├── templates/                              # HTML UI templates
+│   ├── auth/
+│   │   ├── admin_login.html                # Admin login page
+│   │   └── user_login.html                 # Member login page
+│   │
+│   ├── admin/                              # Admin dashboard pages
+│   │   ├── home.html                       # Admin home dashboard
+│   │   ├── add_book.html                   # Book addition form
+│   │   ├── update_book.html                # Book update form
+│   │   ├── add_membership.html             # Member registration form
+│   │   ├── update_membership.html          # Member update form
+│   │   ├── user_management.html            # User management page
+│   │   └── reports/                        # Admin reports
+│   │       ├── overdue_returns.html
+│   │       ├── active_issues.html
+│   │       └── master_members.html
+│   │
+│   ├── user/                               # Member pages
+│   │   ├── home.html                       # Member home dashboard
+│   │   └── reports/                        # Member reports
+│
+│   └── shared/                             # Shared components
+│       ├── navbar.html                     # Navigation bar
+│       ├── confirmation.html               # Confirmation dialog
+│       └── cancellation.html               # Cancellation dialog
+│
+├── static/                                 # Static assets
+│   └── css/
+│       └── style.css                       # Global styling
+│
+└── README.md                               # This file
+```
 
 ---
 

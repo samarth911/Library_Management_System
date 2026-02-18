@@ -100,7 +100,7 @@ def confirm_issue(
 
         conn.commit()
 
-        return RedirectResponse("/search-book", status_code=303)
+        return RedirectResponse("/success?msg=Book Issued Successfully", status_code=303)
 
     except Exception as e:
         conn.rollback()

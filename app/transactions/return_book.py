@@ -76,10 +76,20 @@ def confirm_return(
             fine = max(0, late_days * 5)
 
             # create fine record
-            cursor.execute(
-                "INSERT INTO fines(issue_id, calculated_amount) VALUES(%s,%s)",
-                (issue_id, fine)
-            )
+            # check if fine already exists
+            cursor.execute("SELECT fine_id FROM fines WHERE issue_id=%s", (issue_id,))
+            existing_fine = cursor.fetchone()
+
+            if existing_fine:
+                cursor.execute(
+                    "UPDATE fines SET calculated_amount=%s WHERE issue_id=%s",
+                    (fine, issue_id)
+                )
+            else:
+                cursor.execute(
+                    "INSERT INTO fines(issue_id, calculated_amount) VALUES(%s,%s)",
+                    (issue_id, fine)
+                )
 
         conn.commit()
 

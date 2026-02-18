@@ -1,0 +1,26 @@
+<h2>Add Membership</h2>
+
+<form method="post" action="/admin/add-membership">
+
+Name: <input type="text" name="name" required><br><br>
+Email: <input type="email" name="email" required><br><br>
+Phone: <input type="text" name="phone" required><br><br>
+Address: <input type="text" name="address" required><br><br>
+
+Membership Duration:<br>
+<input type="radio" name="duration" value="6" checked> 6 Months
+<input type="radio" name="duration" value="12"> 1 Year
+<input type="radio" name="duration" value="24"> 2 Years
+<br><br>
+
+<button type="submit">Create Membership</button>
+
+</form>
+
+{% if message %}
+<p style="color:green">{{ message }}</p>
+{% endif %}
+
+{% if error %}
+<p style="color:red">{{ error }}</p>
+{% endif %}

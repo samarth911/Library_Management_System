@@ -1,0 +1,43 @@
+<h2>Search Available Books</h2>
+
+<form method="post" action="/search-book">
+Title: <input type="text" name="title">
+Author: <input type="text" name="author">
+
+Type:
+<select name="category">
+    <option value="">--Select--</option>
+    <option value="BOOK">Book</option>
+    <option value="MOVIE">Movie</option>
+</select>
+
+<button type="submit">Search</button>
+</form>
+
+{% if error %}
+<p style="color:red">{{ error }}</p>
+{% endif %}
+
+{% if results %}
+<form method="post" action="/issue-select">
+<table border="1">
+<tr>
+<th>Select</th>
+<th>Title</th>
+<th>Author</th>
+<th>Serial No</th>
+</tr>
+
+{% for r in results %}
+<tr>
+<td><input type="radio" name="copy_id" value="{{ r.copy_id }}"></td>
+<td>{{ r.title }}</td>
+<td>{{ r.author }}</td>
+<td>{{ r.serial_no }}</td>
+</tr>
+{% endfor %}
+
+</table>
+<button type="submit">Issue Selected</button>
+</form>
+{% endif %}

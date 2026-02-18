@@ -1,0 +1,25 @@
+<h2>Issue Book</h2>
+
+<form method="post" action="/confirm-issue">
+
+<input type="hidden" name="copy_id" value="{{ book.copy_id }}">
+
+Title: <input type="text" value="{{ book.title }}" readonly><br><br>
+Author: <input type="text" value="{{ book.author }}" readonly><br><br>
+
+Membership No: <input type="text" name="membership_no" required><br><br>
+
+Issue Date:
+<input type="date" name="issue_date" value="{{ issue_date }}" min="{{ issue_date }}" required>
+<br><br>
+
+Return Date:
+<input type="date" name="return_date" value="{{ return_date }}" max="{{ return_date }}" required>
+<br><br>
+
+Remarks:
+<input type="text" name="remarks"><br><br>
+
+<button type="submit">Confirm Issue</button>
+
+</form>

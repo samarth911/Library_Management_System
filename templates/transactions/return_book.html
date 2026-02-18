@@ -1,0 +1,35 @@
+<h2>Return Book</h2>
+
+<form method="post" action="/return-book">
+Serial Number: <input type="text" name="serial_no" required>
+<button type="submit">Search</button>
+</form>
+
+{% if error %}
+<p style="color:red">{{ error }}</p>
+{% endif %}
+
+{% if issue %}
+<hr>
+
+<form method="post" action="/confirm-return">
+
+<input type="hidden" name="issue_id" value="{{ issue.issue_id }}">
+<input type="hidden" name="copy_id" value="{{ issue.copy_id }}">
+
+Title: <input type="text" value="{{ issue.title }}" readonly><br><br>
+Author: <input type="text" value="{{ issue.author }}" readonly><br><br>
+
+Membership No: <input type="text" value="{{ issue.membership_no }}" readonly><br><br>
+Member Name: <input type="text" value="{{ issue.name }}" readonly><br><br>
+
+Issue Date: <input type="date" value="{{ issue.issue_date }}" readonly><br><br>
+
+Return Date:
+<input type="date" name="return_date" value="{{ issue.due_date }}" required>
+<br><br>
+
+<button type="submit">Confirm Return</button>
+
+</form>
+{% endif %}

@@ -1,0 +1,22 @@
+<h2>Pay Fine</h2>
+
+<form method="post" action="/complete-return">
+
+<input type="hidden" name="issue_id" value="{{ issue_id }}">
+<input type="hidden" name="copy_id" value="{{ copy_id }}">
+
+Calculated Fine: <b>{{ fine }}</b><br><br>
+
+{% if fine > 0 %}
+Fine Paid:
+<input type="checkbox" name="paid" value="yes"> I confirm payment
+<br><br>
+{% else %}
+No fine applicable.<br><br>
+{% endif %}
+
+Remarks: <input type="text" name="remarks"><br><br>
+
+<button type="submit">Complete Return</button>
+
+</form>

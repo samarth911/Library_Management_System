@@ -1,0 +1,17 @@
+<h2>Available Books</h2>
+
+<table border="1">
+<tr>
+<th>Title</th>
+<th>Author</th>
+<th>Serial Number</th>
+</tr>
+
+{% for b in books %}
+<tr>
+<td>{{ b.title }}</td>
+<td>{{ b.author }}</td>
+<td>{{ b.serial_no }}</td>
+</tr>
+{% endfor %}
+</table>

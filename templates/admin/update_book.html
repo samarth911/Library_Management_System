@@ -1,0 +1,40 @@
+<h2>Update Book</h2>
+
+<form method="post" action="/admin/update-book-search">
+Search Title: <input type="text" name="title" required>
+<button type="submit">Search</button>
+</form>
+
+{% if error %}
+<p style="color:red">{{ error }}</p>
+{% endif %}
+
+{% if books %}
+<hr>
+<h3>Select Book</h3>
+
+{% for b in books %}
+<form method="post" action="/admin/update-book-action">
+
+<input type="hidden" name="item_id" value="{{ b.item_id }}">
+
+Title: <input type="text" name="title" value="{{ b.title }}" required><br><br>
+Author: <input type="text" name="author" value="{{ b.author }}" required><br><br>
+Year: <input type="number" name="year" value="{{ b.publication_year }}" required><br><br>
+Rack: <input type="text" name="rack" value="{{ b.rack_location }}" required><br><br>
+
+Type:
+<input type="radio" name="category" value="BOOK" {% if b.category=='BOOK' %}checked{% endif %}> Book
+<input type="radio" name="category" value="MOVIE" {% if b.category=='MOVIE' %}checked{% endif %}> Movie
+<br><br>
+
+<button type="submit">Update</button>
+
+</form>
+<hr>
+{% endfor %}
+{% endif %}
+
+{% if message %}
+<p style="color:green">{{ message }}</p>
+{% endif %}

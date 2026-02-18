@@ -13,6 +13,15 @@ from transactions.issue_book import router as issue_router
 from transactions.return_book import router as return_router
 from reports.master_list import router as master_router
 from reports.active_issues import router as active_router
+from reports.overdue_returns import router as overdue_router
+from maintenance.update_membership import router as update_membership_router
+from maintenance.update_book import router as update_book_router
+from maintenance.user_management import router as user_router
+from transactions.book_availability import router as availability_router
+from utils.feedback_routes import router as feedback_router
+
+
+
 
 
 
@@ -33,7 +42,12 @@ app.include_router(issue_router)
 app.include_router(return_router)
 app.include_router(master_router)
 app.include_router(active_router)
-
+app.include_router(overdue_router)
+app.include_router(update_membership_router)
+app.include_router(update_book_router)
+app.include_router(user_router)
+app.include_router(availability_router)
+app.include_router(feedback_router)
 
 @app.get("/")
 def root():

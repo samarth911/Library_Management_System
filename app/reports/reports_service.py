@@ -1,4 +1,5 @@
 from database.connection import get_connection
+from datetime import date
 
 
 def get_master_books():
@@ -61,6 +62,36 @@ def get_active_issues():
             JOIN items it ON c.item_id = it.item_id
             WHERE i.status='ISSUED'
             ORDER BY i.due_date
+            """
+            cursor.execute(query)
+            return cursor.fetchall()
+
+    finally:
+        conn.close()
+
+
+
+
+def get_overdue_returns():
+    conn = get_connection()
+
+    try:
+        with conn.cursor() as cursor:
+            query = """
+            SELECT 
+                m.membership_no,
+                m.name AS member_name,
+                it.title,
+                i.issue_date,
+                i.due_date,
+                DATEDIFF(CURDATE(), i.due_date) AS overdue_days
+            FROM issues i
+            JOIN members m ON i.member_id = m.member_id
+            JOIN item_copies c ON i.copy_id = c.copy_id
+            JOIN items it ON c.item_id = it.item_id
+            WHERE i.status='ISSUED'
+              AND i.due_date < CURDATE()
+            ORDER BY overdue_days DESC
             """
             cursor.execute(query)
             return cursor.fetchall()

@@ -11,7 +11,7 @@ from fastapi.responses import RedirectResponse
 
 @router.get("/issue-select")
 def issue_select_redirect():
-    return RedirectResponse("/search-book")
+    return RedirectResponse("/success?msg=Book Issued Successfully", status_code=303)
 
 
 @router.post("/issue-select")

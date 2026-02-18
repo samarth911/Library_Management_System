@@ -1,0 +1,23 @@
+<h2>Overdue Returns</h2>
+
+<table border="1">
+<tr>
+<th>Membership No</th>
+<th>Name</th>
+<th>Book Title</th>
+<th>Issue Date</th>
+<th>Due Date</th>
+<th>Overdue Days</th>
+</tr>
+
+{% for r in records %}
+<tr>
+<td>{{ r.membership_no }}</td>
+<td>{{ r.member_name }}</td>
+<td>{{ r.title }}</td>
+<td>{{ r.issue_date }}</td>
+<td>{{ r.due_date }}</td>
+<td>{{ r.overdue_days }}</td>
+</tr>
+{% endfor %}
+</table>

@@ -118,16 +118,8 @@ def complete_return(
             fine = cursor.fetchone()
 
             if fine["calculated_amount"] > 0 and not paid:
-                return templates.TemplateResponse(
-                    "transactions/pay_fine.html",
-                    {
-                        "request": request,
-                        "issue_id": issue_id,
-                        "copy_id": copy_id,
-                        "fine": fine["calculated_amount"],
-                        "error": "You must confirm fine payment"
-                    }
-                )
+                return RedirectResponse("/cancel?msg=Fine Payment Required", status_code=303)
+
 
             # mark fine paid
             cursor.execute(
@@ -149,7 +141,7 @@ def complete_return(
 
         conn.commit()
 
-        return RedirectResponse("/search-book", status_code=303)
+        return RedirectResponse("/success?msg=Book Returned Successfully", status_code=303)
 
     finally:
         conn.close()

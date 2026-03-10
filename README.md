@@ -233,13 +233,3 @@ library-management-system/
 ```
 
 ---
-
-## License
-
-This project is part of the Library Management System initiative.
-
----
-
-## Support & Documentation
-
-For issues or questions, please refer to the inline code documentation or contact the development team.
